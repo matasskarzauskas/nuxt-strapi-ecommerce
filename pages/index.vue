@@ -1,12 +1,11 @@
 <template>
-  <div class="p-5 bg-teal-500 text-white">
-    <NuxtLink to="/">Store</NuxtLink>
-  </div>
-
-  <ProductGrid></ProductGrid>
+  <section>
+    <Slider></Slider>
+    <ProductGrid></ProductGrid>
+  </section>
 </template>
 
 <script setup lang="ts">
-
+  import Slider from "~/components/index/Slider.vue";
   import ProductGrid from '~/components/ProductGrid.vue'
 </script>

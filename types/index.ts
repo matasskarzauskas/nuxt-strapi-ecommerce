@@ -16,3 +16,8 @@ export interface Category {
     name: string
     products: Product[]
 }
+
+export interface Locale {
+    code: string
+    name: string
+}

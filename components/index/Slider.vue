@@ -5,7 +5,7 @@
       :slides-per-view="1"
       :space-between="0"
       :autoplay="true"
-      :loop="true"
+      :loop="(slides.length > 1) ? true : false"
       navigation
       :pagination="{ clickable: true }"
       @swiper="onSwiper"
@@ -20,12 +20,14 @@
   </swiper>
 </template>
 
-<script setup>
-import { Navigation, Pagination } from 'swiper';
+<script setup lang="ts">
+  import { Navigation, Pagination } from 'swiper';
   import { Swiper, SwiperSlide } from 'swiper/vue';
   import 'swiper/css';
   import 'swiper/css/navigation';
   import 'swiper/css/pagination';
+
+  const { $getLocale } = useNuxtApp()
 
   const loadSlides = async() => {
     try {
@@ -33,7 +35,8 @@ import { Navigation, Pagination } from 'swiper';
       const response = await find("index-page", {
         populate: [
           'Slider'
-        ]
+        ],
+        locale: ($getLocale()).code
       });
 
       return response.data.attributes.Slider.data ?? [];

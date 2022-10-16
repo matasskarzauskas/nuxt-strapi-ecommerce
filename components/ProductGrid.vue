@@ -33,7 +33,7 @@
         populate: [
             'cover'
         ],
-        locale: ($getLocale()).code
+        locale: (await $getLocale()).code
       });
 
       return response.data;

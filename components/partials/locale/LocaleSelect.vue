@@ -1,9 +1,9 @@
 <template>
-  <div class="locale-select flex items-center justify-center rounded-md bg-teal-400 text-white overflow-hidden" @click="openLocaleDialog">
+  <button class="locale-select flex items-center justify-center rounded-md bg-teal-400 text-white overflow-hidden" @click="openLocaleDialog">
     <country-flag :country="currentLocale.code"/>
     <span class="cart-count bg-teal-600 px-4 py-5 hidden sm:flex">{{ currentLocale.name }}</span>
     <DynamicDialog />
-  </div>
+  </button>
 </template>
 
 <script setup lang="ts">
@@ -12,7 +12,7 @@
   const { $getLocale } = useNuxtApp()
 
   const dialog = useDialog();
-  const locale = $getLocale()
+  const locale = await $getLocale()
 
   if (locale.code === 'en') {
     locale.code = 'gb'
